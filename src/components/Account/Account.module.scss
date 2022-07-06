@@ -1,0 +1,55 @@
+@import url(../../style/Mixins.scss);
+
+.avatarAccount {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.textAccount {
+  font-size: 12px;
+  line-height: 110%;
+  margin-right: 5px;
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+.flexAccount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.tab {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding-left: 30px;
+  padding-bottom: 23px;
+  padding-top: 24px;
+  padding-right: 65px;
+  z-index: 3;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.avatar {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+.link {
+  font-size: 12px;
+  margin-bottom: 7px;
+  color: #333;
+  transition: 0.38s ease-in-out;
+  &:hover {
+    color: #cbcbcb;
+  }
+}
+.info {
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 10px;
+}

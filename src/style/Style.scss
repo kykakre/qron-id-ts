@@ -1,0 +1,486 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600&display=swap");
+@import "./Mixins.scss";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+body {
+  font-family: "Commissioner";
+  font-weight: 400;
+  @include fluid(font-size, 12px, 14px);
+  font-style: normal;
+  line-height: normal;
+  background: #fff;
+  position: relative;
+  color: #333333;
+}
+body,
+html {
+  overflow-x: hidden;
+}
+input {
+  outline: none;
+}
+.App {
+  @include fluid(padding-left, 15px, 100px);
+  @include fluid(padding-right, 15px, 100px);
+  @include fluid(padding-top, 25px, 50px);
+  @include fluid(padding-bottom, 25px, 50px);
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+
+  @include fluid(grid-column-gap, 40px, 130px);
+}
+.NavItem {
+  display: flex;
+  align-items: center;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+  position: relative;
+  z-index: 2;
+  &:before {
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: -1;
+    position: absolute;
+    background: rgba(1, 162, 249, 0.19);
+
+    border-radius: 7px;
+    height: 100%;
+    width: 0%;
+    transition: 0.38s ease-in-out;
+  }
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+}
+.NavItemActive {
+  border: 1px solid #01a2fa;
+  color: #01a2fa;
+
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  opacity: 1;
+  img {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(59%) saturate(3031%)
+      hue-rotate(172deg) brightness(98%) contrast(103%);
+  }
+}
+.content {
+  @include fluid(margin-top, 25px, 50px);
+}
+.content-min {
+  width: 700px;
+  box-shadow: inset 0px 0px 19px 4px rgba(203, 203, 203, 0.35);
+  border-radius: 25px;
+  background: rgba(230, 230, 230, 0.19);
+  @include fluid(padding-top, 15px, 25px);
+  @include fluid(padding-bottom, 15px, 25px);
+  @include fluid(padding-left, 25px, 50px);
+  @include fluid(padding-right, 25px, 50px);
+}
+.card {
+  width: 98%;
+  background: #ffffff;
+  border: 1px solid #cbcbcb;
+  border-radius: 20px;
+  @include fluid(margin-top, 15px, 25px);
+  @include fluid(padding-top, 20px, 40px);
+  @include fluid(padding-left, 15px, 65px);
+  @include fluid(padding-right, 15px, 50px);
+  @include fluid(padding-bottom, 20px, 40px);
+}
+.card-min {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  @include fluid(margin-top, 15px, 25px);
+  @include fluid(padding-top, 20px, 40px);
+  @include fluid(padding-left, 10px, 20px);
+  @include fluid(padding-right, 10px, 20px);
+  @include fluid(padding-bottom, 20px, 40px);
+}
+.Link {
+  background: linear-gradient(242.41deg, #00e7ff 3.15%, #01a2fa 98.51%);
+  box-shadow: 0px 3px 4px 1px rgba(137, 137, 137, 0.5);
+  border-radius: 12px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 18px;
+  padding-right: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  background-size: 100%, 100%;
+  transition: 0.38s ease-in-out;
+
+  &:hover {
+    background-size: 150%, 100%;
+    margin-top: -5px;
+    margin-bottom: 15px;
+  }
+}
+.linkBlue {
+  font-size: 16px;
+  color: #01a2fa;
+  position: relative;
+  display: block;
+  width: fit-content;
+  &::before {
+    content: "";
+    transition: 0.38s ease-in-out;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    background: #01a2fa;
+    width: 0;
+    height: 3px;
+    opacity: 0;
+    border-radius: 1px;
+  }
+  &:hover {
+    &::before {
+      left: 0;
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
+.tab {
+  list-style: none;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  color: #cbcbcb;
+  z-index: 3;
+  outline: none;
+  @include fluid(padding-left, 15px, 30px);
+  @include fluid(padding-right, 15px, 30px);
+  @include fluid(padding-top, 3px, 5px);
+  @include fluid(padding-bottom, 3px, 5px);
+  overflow: hidden;
+  transition: 0.38s ease-in-out;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    transition: 0.38s linear;
+    height: 100%;
+    width: 0;
+    opacity: 0;
+    z-index: -1;
+    background: linear-gradient(242.41deg, #00e7ff 3.15%, #01a2fa 98.51%);
+  }
+  div {
+    @include fluid(font-size, 10px, 12px);
+    color: #fff;
+    transition: 0.38s ease-in-out;
+    position: relative;
+    z-index: 1;
+  }
+}
+.list {
+  margin-top: 25px;
+  display: flex;
+  border: 1px solid #cbcbcb;
+  width: fit-content;
+  border-radius: 1000px;
+  @include fluid(padding-left, 10px, 15px);
+  @include fluid(padding-right, 10px, 15px);
+  @include fluid(padding-top, 5px, 7px);
+  @include fluid(padding-bottom, 5px, 7px);
+}
+.activeTab {
+  &::before {
+    opacity: 1;
+    width: 100%;
+  }
+
+  color: #ffffff;
+}
+.tabs {
+  border-radius: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.accordeon {
+  transition: 0.38s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  @include fluid(padding-top, 15px, 20px);
+  border-bottom: 1px solid #cbcbcb;
+}
+.accordeonCard {
+  transition: 0.38s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: auto;
+}
+.cursor {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  transition: 0.38s ease-in-out;
+  &:hover {
+    .dropdownCard {
+      background: url("../Img/icon/arrowBluw.svg") no-repeat;
+
+      @include fluid(width, 15px, 19px);
+      @include fluid(height, 7px, 9px);
+      background-size: contain;
+    }
+  }
+}
+.accordeonOpen {
+  backdrop-filter: blur(100px);
+}
+.dropdown {
+  transform: rotate(180deg);
+  background-size: contain;
+  @include fluid(width, 12px, 15px);
+  @include fluid(height, 6px, 8px);
+  transition: 0.38s ease-in-out;
+  background: url("../Img/icon/arrow.svg") no-repeat;
+  background-size: contain;
+}
+.dropdownOpen {
+  transition: 0.38s ease-in-out;
+  transform: rotate(0deg);
+  @include fluid(width, 12px, 15px);
+  @include fluid(height, 6px, 8px);
+  background: url("../Img/icon/arrowBluw.svg") no-repeat;
+  background-size: contain;
+}
+.addCard {
+  width: 167px;
+  display: block;
+  cursor: pointer;
+  @include fluid(margin-right, 10px, 15px);
+  background: linear-gradient(253.3deg, #00e7ff 0%, #01a2fa 100%);
+  background-size: 100%, 100%;
+  border-radius: 18px;
+  align-items: center;
+  padding-top: 15px;
+  padding-left: 19px;
+  padding-bottom: 14px;
+  padding-right: 19px;
+  margin-right: 15px;
+  height: 116px;
+  transition: 0.38s ease-in-out;
+  &:hover {
+    background-size: 150%, 100%;
+  }
+}
+.modal {
+  top: 50%;
+  left: 50%;
+  background: #ffffff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  @include fluid(padding-left, 25px, 50px);
+  @include fluid(padding-right, 25px, 50px);
+  @include fluid(padding-top, 15px, 30px);
+  @include fluid(padding-bottom, 15px, 30px);
+  z-index: 100;
+  width: 600px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  outline: none;
+}
+.dropdownCard {
+  transform: rotate(180deg);
+  @include fluid(width, 15px, 19px);
+  @include fluid(height, 7px, 9px);
+  transition: 0.38s ease-in-out;
+  background: url("../Img/icon/arrow.svg") no-repeat;
+  background-size: contain;
+}
+.dropdownCardOpen {
+  transform: rotate(0deg);
+  transition: 0.38s ease-in-out;
+  @include fluid(width, 15px, 19px);
+  @include fluid(height, 7px, 9px);
+  background: url("../Img/icon/arrowBluw.svg") no-repeat;
+  background-size: contain;
+}
+.contentAccordeon {
+  color: #fff;
+  max-height: 0;
+  opacity: 0;
+  transition: 0.4s linear;
+  animation: close 1.5s;
+}
+.contentAccordeonOpen {
+  animation: open 1s;
+  transition: 0.4s linear;
+  opacity: 1;
+  max-height: 100%;
+  @include fluid(margin-bottom, 15px, 35px);
+  @include fluid(margin-top, 10px, 25px);
+}
+.titleAccordeon {
+  @include fluid(font-size, 14px, 16px);
+}
+.blockAccordeon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  @include fluid(margin-bottom, 10px, 20px);
+  transition: 0.38s ease-in-out;
+  &:hover {
+    .dropdown {
+      transition: 0.38s ease-in-out;
+      @include fluid(width, 12px, 15px);
+      @include fluid(height, 6px, 8px);
+      background: url("../Img/icon/arrowBluw.svg") no-repeat;
+      background-size: contain;
+    }
+  }
+}
+.accordion-wrapper__content-body {
+  @include fluid(margin-bottom, 10px, 15px);
+}
+.accordion-wrapper__content-enter {
+  overflow: hidden;
+  max-height: 0;
+}
+.accordion-wrapper__content-enter-active {
+  max-height: 1000px;
+  transition: max-height 0.6s ease-in-out;
+}
+.accordion-wrapper__content-exit {
+  max-height: 1000px;
+}
+.accordion-wrapper__content-exit-active {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+}
+.form {
+  width: 75%;
+}
+.submit {
+  background: #01a2fa;
+  border-radius: 7px;
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 70px;
+  padding-right: 70px;
+  border: 1px solid #01a2fa;
+  transition: 0.38s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    color: #01a2fa;
+  }
+}
+@media screen and(max-width:1400px) {
+  .App {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .sidebar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .account {
+    grid-column: 5;
+    grid-row: 1;
+  }
+}
+@media screen and (max-width: 1400px) {
+  // .addCard {
+  //   width: 18%;
+  // }
+}
+@media screen and (max-width: 992px) {
+  .addCard {
+    margin-bottom: 10px;
+  }
+  .form {
+    width: 100%;
+  }
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+}
+@media screen and(max-width:768px) {
+  .content-min {
+    width: 576px;
+  }
+  .modal {
+    width: 300px;
+  }
+  .list {
+    width: 50%;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 576px) {
+  // .addCard {
+  //   width: 100%;
+  // }
+  .addCard {
+    width: 48%;
+    margin-right: 0;
+    height: 120px;
+    margin-right: 2%;
+  }
+  .content-min {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .App {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .card {
+    width: 100%;
+  }
+  .list {
+    width: 70%;
+  }
+}
